@@ -1,0 +1,26 @@
+import java.text.SimpleDateFormat
+
+apply plugin: 'java'
+
+group 'com.ca.sometest'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+def timestamp = new SimpleDateFormat("MM/dd/yyyy hh:mm aa").format(System.currentTimeMillis())
+
+jar {
+    manifest {
+        attributes "Owner": "*************"
+        attributes "Product": "JAVA Test"
+        attributes "Implementation-Build": "${timestamp}"
+    }
+}
